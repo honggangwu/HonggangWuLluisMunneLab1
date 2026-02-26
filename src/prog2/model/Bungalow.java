@@ -54,12 +54,7 @@ public class Bungalow extends Casa {
     }
 
     public String toString() {
-        return "Nom=" + getNom() + ", Id=" + getId() +
-                ", estada mínima en temp ALTA: " + getEstadaMinima(Temp.ALTA) +
-                ", estada mínima en temp BAIXA: " + getEstadaMinima(Temp.BAIXA) +
-                " Bungalow { mida=" + getMida() +
-                ", habitacions=" + getHabitacions() +
-                ", places persones=" + getPlacesPersones() +
+        return super.toString() +
                 ", places parquing=" + getPlacesParquing() +
                 ", Terrassa=" + isTerrassa() +
                 ", Tv=" + isTv() +

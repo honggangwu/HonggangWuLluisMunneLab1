@@ -32,9 +32,9 @@ public class Parcela extends Allotjament {
     }
 
     public String toString() {
-        return "Nom=" + getNom() + ", Id=" + getId() +
-                ", estada mínima en temp ALTA: " + getEstadaMinima(Temp.ALTA) +
-                ", estada mínima en temp BAIXA: " + getEstadaMinima(Temp.BAIXA) +".";
+        return super.toString().replace("}", "") +
+                ", mida=" + getMida() +
+                ", Connexioelectrica=" + isConnexioElectrica();
     }
 
 }

@@ -31,7 +31,7 @@ public class BungalowPremium extends Bungalow {
 
     @Override
     public boolean correcteFuncionament() {
-        return this.isAireFred() && (this.codiWifi.length() >= 8 && this.codiWifi.length() <= 16);
+        return super.correcteFuncionament() && (this.codiWifi.length() >= 8 && this.codiWifi.length() <= 16);
     }
 
 
