@@ -27,7 +27,7 @@ public class Client{
         if (Dni.length() == 9) {
             this.Dni = Dni;  // Assignem el valor del paràmetre a l'atribut
         } else {
-            throw new ExcepcioReserva("ERROR: El Dni ha de tenir 9 caràcters");
+            throw new ExcepcioReserva("ERROR: El DNI ha de tenir 9 caràcters.");
         }
     }
 
