@@ -11,8 +11,9 @@ import prog2.vista.ExcepcioReserva;
 public interface InLlistaReserves {
     
     /**
-     * Comprova que l'allotjament estigui disponible pel dia i hora indicat.
-     * En cas afirmatiu, crea la reserva i l’afegeix a la llista de reserves del gimnàs. 
+     * Comprova que l'estada que es demani sigui més llarga o igual que l'estada mínima.
+     * Comprova que l'allotjament estigui disponible pels dies indicats.
+     * En cas afirmatiu, crea la reserva i l’afegeix a la llista de reserves del camping.
      * En cas negatiu, llança una excepció de tipus ExceptionReserva amb el missatge d'error.
      * 
      * @param allotjament

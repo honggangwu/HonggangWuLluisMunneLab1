@@ -53,15 +53,12 @@ public interface InCamping {
      */
     int getNumClients();
 
-
-
     /**
      * Crea un nou objecte de tipus Client i l'afegeix a la llista de clients.
      * @param nom_ el nom del nou client.
      * @param dni_ el DNI del nou client.
-     * @throws ExcepcioReserva si el dni no és de 9 xifres (es comprova en la classe Client)
      */
-    void afegirClient(String nom_, String dni_) throws ExcepcioReserva;
+    void afegirClient(String nom_, String dni_);
 
 
     /**
@@ -127,14 +124,6 @@ public interface InCamping {
      */
     void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva;
 
-
-    /**
-     * Calcula la mida total de totes les parceles del càmping.
-     * @return  la suma de les mides de totes les parceles.
-     */
-    float calculMidaTotalParceles();
-
-    
     /**
      * Recorre la llista de serveis comprovant el correcte funcionament de cadascun d'ells per contar el número de serveis que estan operatius.
      * @return el nombre de serveis operatius.
@@ -142,10 +131,10 @@ public interface InCamping {
     int calculAllotjamentsOperatius();
 
     /**
-     * Cerca i retorna l'allotjament amb estada mínima de la temporada baixa més curta.
+     * Cerca i retorna l'allotjament amb estada mínima de la temporada alta més curta.
      * @return l'allotjament amb estada mínima de la temporada baixa més curta.
      */
-    Allotjament getAllotjamentEstadaMesCurta();
+    Allotjament getAllotjamentEstadaMesCurta(InAllotjament.Temp temp);
 
 
 
