@@ -187,7 +187,7 @@ public class Camping implements InCamping{
 
     public Client buscarClient(String dni_){
         for (Client client : clients) {
-            if (client.getDni() == dni_){
+            if (client.getDni().equals(dni_)){
                 return client;
             }
         }
