@@ -66,7 +66,7 @@ public class Camping implements InCamping{
 
 
     @Override
-    public void afegirClient(String nom_, String dni_) throws ExcepcioReserva {
+    public void afegirClient(String nom_, String dni_) {
         Client nouClient = new Client(nom_, dni_);
         clients.add(nouClient);
     }
@@ -113,17 +113,16 @@ public class Camping implements InCamping{
         Allotjament nouAllotjament = buscarAllotjament(id_);
 
         if (nouClient == null) {
-            throw new ExcepcioReserva("No existeix aquest Client");
+            throw new ExcepcioReserva("El client amb DNI "+ dni_ +" no existeix");
         }
         if (nouAllotjament == null) {
-            throw new ExcepcioReserva("No existeix aquest Id");
+            throw new ExcepcioReserva("L'allotjament amb id "+id_+" no existeix");
         }
-
         // Afegir la reserva a la llista de reserves del càmping
         this.reserves.afegirReserva(nouAllotjament, nouClient, dataEntrada, dataSortida);
     }
 
-    @Override
+
     public float calculMidaTotalParceles() {
         float midaTotal = 0; // Iniciamos la suma total de las parcelas
 
@@ -154,8 +153,8 @@ public class Camping implements InCamping{
         return count;
     }
 
-    @Override
-    public Allotjament getAllotjamentEstadaMesCurta() {
+
+    public Allotjament getAllotjamentEstadaMesCurta(InAllotjament.Temp temp) {
         if (reserves == null || reserves.getNumReserves() == 0) {
             return null; // Si no hi ha reserves, retornem null
         }

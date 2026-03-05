@@ -16,6 +16,9 @@ public class Reserva{
         this.allotjament = allotjament;
         this.dataEntrada = dataEntrada;
         setDataSortida(dataSortida);
+        if(dataEntrada.isAfter(dataSortida)) {
+            throw new ExcepcioReserva("La data de sortida no pot ser abans de la data d'entrada");
+        }
     }
 
 
@@ -27,11 +30,6 @@ public class Reserva{
     public void setClient(Client client) {this.client = client;}
     public void setAllotjament_(Allotjament allotjament) {this.allotjament = allotjament;}
     public void setDataEntrada(LocalDate novaDataEntrada) {this.dataEntrada = novaDataEntrada;}
-    public void setDataSortida(LocalDate dataSortida) throws ExcepcioReserva {
-        if(dataEntrada.isAfter(dataSortida)) {
-            throw new ExcepcioReserva("Data de sortida incorrecta");
-        }
-        this.dataSortida = dataSortida;
-    }
+    public void setDataSortida(LocalDate dataSortida) {this.dataSortida = dataSortida;}
 
 }

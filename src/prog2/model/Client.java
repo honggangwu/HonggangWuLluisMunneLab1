@@ -6,7 +6,7 @@ public class Client{
     private String nom;
     private String Dni;
 
-    public Client(String nom,String Dni) throws ExcepcioReserva {
+    public Client(String nom,String Dni) {
         this.nom=nom;
         setDni(Dni);
     }
@@ -23,17 +23,15 @@ public class Client{
         return this.Dni;
     }
 
-    public void setDni(String Dni) throws ExcepcioReserva {
+    public void setDni(String Dni){
         if (Dni.length() == 9) {
             this.Dni = Dni;  // Assignem el valor del paràmetre a l'atribut
-        } else {
-            throw new ExcepcioReserva("ERROR: El DNI ha de tenir 9 caràcters.");
         }
     }
 
 
     public String toString(){
-        return "Nom=" + getNom() + ", Dni=" + getDni();
+        return getNom()+ " amb DNI: "+ getDni()+". ";
     }
 
 }

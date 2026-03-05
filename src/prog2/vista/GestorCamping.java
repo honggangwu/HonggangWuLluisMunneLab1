@@ -5,6 +5,7 @@ package prog2.vista;
 
 import prog2.model.Allotjament;
 import prog2.model.Camping;
+import prog2.model.InAllotjament;
 
 import java.time.LocalDate;
 
@@ -20,7 +21,6 @@ public class GestorCamping {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
 
         Camping campingMar = new Camping("Camping del Mar");
 
@@ -49,7 +49,8 @@ public class GestorCamping {
         // Mostrar l'allotjament amb estada mínima de la temporada baixa més curta amb el següent missatge:
         // >> L'allotjament amb estada mínima de la temporada baixa més curta és el següent:
         //--------------------------------------------------------------------------------------------------
-        Allotjament allotjamentEstadaMin=campingMar.getAllotjamentEstadaMesCurta();
+
+        Allotjament allotjamentEstadaMin=campingMar.getAllotjamentEstadaMesCurta(InAllotjament.Temp.ALTA);
         System.out.println("L'allotjament amb estada mínima de la temporada baixa més curta és el següent: "+allotjamentEstadaMin);
 
     }
@@ -201,20 +202,12 @@ public class GestorCamping {
         //------------------------------
         String nomClient="Patricia Fernandez";
         String dni="12345678X";
-        try {
-            camping.afegirClient(nomClient, dni);
-        } catch (ExcepcioReserva ex) {
-            System.out.println(ex.getMessage());
-        }
+        camping.afegirClient(nomClient, dni);
 
 
         nomClient = "Lluís Plans";
         dni="78659101A";
-        try {
-            camping.afegirClient(nomClient, dni);
-        } catch (ExcepcioReserva ex) {
-            System.out.println(ex.getMessage());
-        }
+        camping.afegirClient(nomClient, dni);
     }
 
     /**
