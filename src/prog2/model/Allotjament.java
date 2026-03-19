@@ -16,7 +16,7 @@ public abstract class Allotjament implements InAllotjament{
     }
 
 
-    // GETTERS I SETTERS
+    // GETTERS I SETTERSv
     @Override
     public String getNom() {
         return this.nom;

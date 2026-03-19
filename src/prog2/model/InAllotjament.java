@@ -3,7 +3,6 @@ package prog2.model;
 
 /**
  * Interfície que defineix les operacions bàsiques per als allotjaments.
- * @author lauraigual
  */
 public interface InAllotjament {
 
@@ -46,17 +45,67 @@ public interface InAllotjament {
     void setEstadaMinima(long estadaMinimaALTA_, long estadaMinimaBAIXA_);
 
     /**
-     * Comprova si l'allotjament funciona correctament.
-     * La implementació dependrà dels criteris específics de cada tipus d'allotjament.
-     * @return true si l'allotjament funciona correctament, false altrament.
-     */
-    boolean correcteFuncionament();
-
-    /**
      * Enumeració que representa les diferents temporades possibles.
      */
-     enum Temp {
+    public enum Temp {
         ALTA,
         BAIXA
+    }
+
+    /**
+     * Modifica l'estat de l'allotjament a No Operatiu i la il·luminació depenent de la tasca rebuda com a paràmetre
+     * @param tasca Objecte de tipus TascaManteniment.
+     */
+    public void tancarAllotjament(TascaManteniment tasca);
+
+    /**
+     * Modifica l'estat de l'allotjament a Operatiu i la il·luminació al 100%
+     */
+    public void obrirAllotjament();
+
+    abstract class  Acces implements InAcces {
+        private String nom;
+        private boolean accessibilitat;
+        private boolean estat;
+        private LlistaAllotjaments llista;
+
+        public Acces(String nom,boolean estat) {
+            this.nom = nom;
+            this.estat = estat;
+            this.llista = new LlistaAllotjaments();
+            this.accessibilitat=false;
+        }
+
+        // GETTERS I SETTERS
+        public String getNom(){ return this.nom;}
+        public void setNom(String nom){this.nom=nom;}
+        public boolean isAccessibilitat(){return accessibilitat;}
+        public void setAccessibilitat(boolean accessibilitat){this.accessibilitat=accessibilitat;}
+        public boolean isOperatiu(){return this.estat;}
+        public void setEstat(boolean estat){this.estat=estat;}
+        public LlistaAllotjaments getLlista(){return this.llista;}
+        public void setLlista(LlistaAllotjaments llista){this.llista=llista;}
+
+        @Override
+        public void afegirAllotjament(Allotjament allotjament) {
+            this.llista.afegirAllotjament(allotjament);
+        }
+
+        @Override
+        public void tancarAcces() {
+            estat = false;
+        }
+
+        @Override
+        public void obrirAcces() {
+            estat = true;
+        }
+
+        @Override
+        public String toString() {
+            return "Nom=" + getNom() + ", accessibilitat=" + isAccessibilitat() +
+                    ", estat: " + isOperatiu()+
+                    ", llista " + getLlista();
+        }
     }
 }
