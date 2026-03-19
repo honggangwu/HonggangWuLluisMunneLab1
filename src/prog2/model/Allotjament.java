@@ -47,14 +47,18 @@ public abstract class Allotjament implements InAllotjament{
         this.estadaMinBaixa = estadaMinimaBAIXA_;
     }
 
-
-    @Override
-    public abstract boolean correcteFuncionament();
-
     public String toString(){
         return "Nom=" + nom + ", Id=" + idAllotjament + ", estada mínima en temp ALTA: " + estadaMinAlta + ", estada mínima en temp BAIXA: " + estadaMinBaixa + ".";
     }
+
+    public void tancarAllotjament(TascaManteniment tasca) {
+
+    }
+    public void obrirAllotjament(){
+
+    }
 }
+
 
 
 

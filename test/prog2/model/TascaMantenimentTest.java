@@ -1,4 +1,4 @@
-package prog2.model.test.prog2.model;
+package prog2.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
