@@ -1,8 +1,11 @@
 package prog2.model;
+
 import prog2.vista.ExcepcioCamping;
 import java.util.ArrayList;
 
+
 public class LlistaAccessos implements InLlistaAccessos {
+
     private ArrayList<Acces> llistaAcces;
 
     public LlistaAccessos() {
@@ -11,9 +14,12 @@ public class LlistaAccessos implements InLlistaAccessos {
 
     @Override
     public void afegirAcces(Acces acc) throws ExcepcioCamping {
-        if (llistaAcces.contains(acc)) {
-            throw new ExcepcioCamping ("Aquest acces ja existeix");
-        } else { llistaAcces.add(acc); }
+        for (Acces a : llistaAcces) {
+            if (a.getNom().equals(acc.getNom())) {
+                throw new ExcepcioCamping("Aquest accés ja existeix: " + acc.getNom());
+            }
+        }
+        llistaAcces.add(acc);
     }
 
     @Override
@@ -23,59 +29,62 @@ public class LlistaAccessos implements InLlistaAccessos {
 
     @Override
     public String llistarAccessos(boolean estat) throws ExcepcioCamping {
-        boolean trobat = false;
         StringBuilder info = new StringBuilder();
+        boolean trobat = false;
+        int i = 1;
+
         for (Acces acces : llistaAcces) {
-            if (acces.isOperatiu() == estat) {
-                info.append(acces.toString()).append("\n"); // Afegim un salt de línia per millorar la llegibilitat
+            if (acces.getEstat() == estat) {
+                info.append(i++).append(". ").append(acces.toString()).append("\n");
                 trobat = true;
             }
         }
-        if (!trobat) { // Llança l'excepció només si cap accés compleix la condició, després de recórrer tota la llista
+
+        if (!trobat) {
             throw new ExcepcioCamping("No hi ha accessos amb l'estat especificat.");
         }
+
         return info.toString();
     }
 
     @Override
     public void actualitzaEstatAccessos() throws ExcepcioCamping {
-        for (Acces acces:llistaAcces){
+        for (Acces acces : llistaAcces) {
             acces.tancarAcces();
-            LlistaAllotjaments llistaAllotjaments=acces.getLlista();
-            if(llistaAllotjaments.containsAllotjamentOperatiu()){
+            if (acces.getLlista().containsAllotjamentOperatiu()) {
                 acces.obrirAcces();
             }
         }
     }
 
     @Override
-    public int calculaAccessosAccessibles() throws ExcepcioCamping {
-        int accessosAccessibles=0;
-
-        for (Acces acces:llistaAcces){
-            if(acces.isAccessibilitat()){
-                accessosAccessibles++;
+    public int calculaAccessosNoAccessibles() throws ExcepcioCamping {
+        int count = 0;
+        for (Acces acces : llistaAcces) {
+            if (!acces.isAccessibilitat()) {
+                count++;
             }
         }
-        return accessosAccessibles;
+        return count;
     }
 
     @Override
-    public float calculaMetresQuadratsAsfalt() throws ExcepcioCamping {
-        int metresTotals = 0;
-        boolean trobat =false;
-       for(Acces acces: llistaAcces) {
-            if (acces instanceof AccesAsfalt) {
-                metresTotals += ((AccesAsfalt)acces).getMetresQuadrats();
-                trobat=true;
+    public float calculaMetresTerra() throws ExcepcioCamping {
+        float total = 0;
+        boolean trobat = false;
+        for (Acces acces : llistaAcces) {
+            if (acces instanceof AccesTerra) {
+                total += ((AccesTerra) acces).getLongitud();
+                trobat = true;
             }
-       }
-       if (!trobat){
-           throw new ExcepcioCamping("No s'ha trobat ningun acces amb asfalt");
-       }
-        return metresTotals;
+        }
+        if (!trobat) {
+            throw new ExcepcioCamping("No s'ha trobat cap accés de terra.");
+        }
+        return total;
     }
 
+    // GETTERS I SETTERS
     public ArrayList<Acces> getLlistaAcces() {
         return llistaAcces;
     }

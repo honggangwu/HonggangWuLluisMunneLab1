@@ -1,7 +1,5 @@
 package prog2.model;
 
-import prog2.vista.ExcepcioReserva;
-
 public class Client{
     private String nom;
     private String Dni;

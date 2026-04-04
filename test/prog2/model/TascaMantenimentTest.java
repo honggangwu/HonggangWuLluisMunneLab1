@@ -13,7 +13,7 @@ public class TascaMantenimentTest {
     void setUp() {
         // Suposant que Allotjament té un constructor bàsic
         allotjament = new Parcela("Allotjament Test", "ID001", true,  "100%", 50,  true);
-        tasca = new TascaManteniment(1, TascaManteniment.TipusTascaManteniment.Reparacio, allotjament, "2024-03-25", 4);
+        tasca = new TascaManteniment(1, allotjament, TascaManteniment.TipusTascaManteniment.Reparacio, "2024-03-25", 4);
     }
 
     @Test

@@ -2,21 +2,21 @@ package prog2.model;
 
 
 public abstract class Casa extends Allotjament {
-    private String mida;
+    private float mida;
     private int habitacions;
     private int placesPersones;
 
 
-    public Casa(String nom, String idAllotjament, long estadaMinAlta,
-            long estadaMinBaixa, String mida, int habitacions, int placesPersones) {
-        super(nom, idAllotjament, estadaMinAlta, estadaMinBaixa);
+    public Casa(String nom, String idAllotjament,boolean estat, String iluminacio, long estadaMinAlta,
+            long estadaMinBaixa, float mida, int habitacions, int placesPersones) {
+        super(nom, idAllotjament,estat,iluminacio, estadaMinAlta, estadaMinBaixa);
         this.mida = mida;
         this.habitacions = habitacions;
         this.placesPersones = placesPersones;
     }
 
 
-    public String getMida(){
+    public float getMida(){
         return this.mida;
     }
 
@@ -31,7 +31,7 @@ public abstract class Casa extends Allotjament {
     }
 
 
-    public void setMida(String mida){
+    public void setMida(float mida){
         this.mida = mida;
     }
 

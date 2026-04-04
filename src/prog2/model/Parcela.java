@@ -6,9 +6,9 @@ public class Parcela extends Allotjament {
     boolean connexioElectrica;
 
 
-    public Parcela(String nom, String idAllotjament,
+    public Parcela(String nom, String idAllotjament,boolean estat, String iluminacio,
                    float mida, boolean connexioElectrica) {
-        super(nom, idAllotjament,4,2);
+        super(nom, idAllotjament,estat, iluminacio,4,2);
         this.mida = mida;
         this.connexioElectrica = connexioElectrica;
     }
@@ -26,7 +26,6 @@ public class Parcela extends Allotjament {
         this.connexioElectrica = connexio;
     }
 
-    @Override
     public boolean correcteFuncionament() {
         return this.connexioElectrica;
     }

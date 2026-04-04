@@ -1,31 +1,49 @@
 package prog2.model;
 
-public abstract class  Acces implements InAcces {
+public abstract class Acces implements InAcces {
     private String nom;
-    private boolean accessibilitat;
     private boolean estat;
     private LlistaAllotjaments llista;
 
-    public Acces(String nom,boolean estat) {
+    public Acces(String nom, boolean estat) {
         this.nom = nom;
         this.estat = estat;
         this.llista = new LlistaAllotjaments();
-        this.accessibilitat=false;
     }
 
     // GETTERS I SETTERS
-    public String getNom(){ return this.nom;}
-    public void setNom(String nom){this.nom=nom;}
-    public boolean isAccessibilitat(){return accessibilitat;}
-    public void setAccessibilitat(boolean accessibilitat){this.accessibilitat=accessibilitat;}
-    public boolean isOperatiu(){return this.estat;}
-    public void setEstat(boolean estat){this.estat=estat;}
-    public LlistaAllotjaments getLlista(){return this.llista;}
-    public void setLlista(LlistaAllotjaments llista){this.llista=llista;}
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public boolean getEstat() {
+        return estat;
+    }
+
+    public void setEstat(boolean estat) {
+        this.estat = estat;
+    }
+
+    public LlistaAllotjaments getLlista() {
+        return llista;
+    }
+
+    public void setLlista(LlistaAllotjaments llista) {
+        this.llista = llista;
+    }
+
+    @Override
+    public LlistaAllotjaments getAAllotjaments() {
+        return llista;
+    }
 
     @Override
     public void afegirAllotjament(Allotjament allotjament) {
-        this.llista.afegirAllotjament(allotjament);
+        llista.afegirAllotjament(allotjament);
     }
 
     @Override
@@ -39,9 +57,13 @@ public abstract class  Acces implements InAcces {
     }
 
     @Override
+    public abstract boolean isAccessibilitat();
+
+    @Override
     public String toString() {
-        return "Nom=" + getNom() + ", accessibilitat=" + isAccessibilitat() +
-                ", estat: " + isOperatiu()+
-                ", llista " + getLlista();
+        return "Nom=" + nom +
+                ", accessibilitat=" + isAccessibilitat() +
+                ", estat=" + estat +
+                ", llista=" + llista;
     }
 }

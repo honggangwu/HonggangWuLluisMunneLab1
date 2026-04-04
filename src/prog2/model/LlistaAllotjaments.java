@@ -54,9 +54,6 @@ public class LlistaAllotjaments implements InLlistaAllotjaments {
         return info.toString();
     }
 
-
-
-
     @Override
     public boolean containsAllotjamentOperatiu() {
         for (Allotjament allotjament : allotjaments) {

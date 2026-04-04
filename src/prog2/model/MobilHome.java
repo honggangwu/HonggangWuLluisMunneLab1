@@ -3,9 +3,9 @@ package prog2.model;
 public class MobilHome extends Casa{
     private boolean barbacoa;
 
-    public MobilHome(String nom, String idAllotjament,
-                     String mida, int habitacions, int placesPersones,boolean barbacoa) {
-        super(nom ,idAllotjament ,5,3,mida,habitacions,placesPersones);
+    public MobilHome(String nom, String idAllotjament,boolean estat, String iluminacio,
+                     float mida, int habitacions, int placesPersones, boolean barbacoa) {
+        super(nom ,idAllotjament ,estat,iluminacio,5,3,mida,habitacions,placesPersones);
         this.barbacoa=barbacoa;
     }
 
@@ -17,7 +17,7 @@ public class MobilHome extends Casa{
         this.barbacoa=barbacoa;
     }
 
-    @Override
+
     public boolean correcteFuncionament() {
         return this.barbacoa;
     }
